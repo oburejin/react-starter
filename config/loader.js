@@ -20,7 +20,7 @@ module.exports = function loader(source) {
       let changedLine = line;
       files.some(f => {
         if(changedLine.includes(f)) {
-          changedLine = line.replace(new RegExp(`(import.*from ').*${f}(.*)`), `$1../${dir}/${f}$2`);
+          changedLine = line.replace(new RegExp(`(import.*from ').*${f}(.*)`), `$1${options.prefix}/${f}$2`);
           return true;
         }
         return false;

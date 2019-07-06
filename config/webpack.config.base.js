@@ -13,6 +13,11 @@ module.exports = () => {
     devServer: {
       historyApiFallback: true
     },
+    resolve: {
+      alias: {
+        "~flavor": path.resolve(__dirname, '../flavor'),
+      }
+    },
     devtool: 'source-map',
     context: path.resolve(__dirname, '../src'),
     module: {
@@ -29,6 +34,7 @@ module.exports = () => {
               loader: path.resolve(__dirname, './loader.js'),
               options: {
                 dir: './flavor',
+                prefix: '~flavor',
               },
             },
           ],
